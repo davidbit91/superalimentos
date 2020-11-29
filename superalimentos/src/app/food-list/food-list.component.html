@@ -12,7 +12,18 @@
     <p>{{ food.calories }}</p>
     <button type="text"  (click)='agregarMenu(food.name, food.calories)'>Add</button>
   </div>
-  <div class="menu">
-
+  <div class="add">
+    <form [formGroup]='formGroup' (ngSubmit)='agregarComida()'>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Calories</mat-label>
+        <input matInput formControlName="calories" />
+      </mat-form-field>
+        <input type="file" formControlName="img" />
+        <button color="primary" mat-raised-button type="submit">Enviar</button>
+    </form>
   </div>
 </div>
