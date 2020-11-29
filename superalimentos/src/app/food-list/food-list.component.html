@@ -1,7 +1,18 @@
+<div class="search">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput #search />
+  </mat-form-field>
+</div>
+
 <div class="container">
-  <div class="foods" *ngFor='let food of listFoods'>
-    <img src="{{food.image}}" alt="">
-    <p>{{food.name}}</p>
-    <p>{{food.calories}}</p>
+  <div class="foods" *ngFor="let food of listFoods | searchPipe: search.value">
+    <img src="{{ food.image }}" alt="" />
+    <p>{{ food.name }}</p>
+    <p>{{ food.calories }}</p>
+    <button type="text"  (click)='agregarMenu(food.name, food.calories)'>Add</button>
+  </div>
+  <div class="menu">
+
   </div>
 </div>
