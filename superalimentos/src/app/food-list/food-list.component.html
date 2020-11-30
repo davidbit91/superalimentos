@@ -4,15 +4,8 @@
     <input matInput #search />
   </mat-form-field>
 </div>
-
-<div class="container">
-  <div class="foods" *ngFor="let food of listFoods | searchPipe: search.value">
-    <img src="{{ food.image }}" alt="" />
-    <p>{{ food.name }}</p>
-    <p>{{ food.calories }}</p>
-    <button type="text"  (click)='agregarMenu(food.name, food.calories)'>Add</button>
-  </div>
-  <div class="add">
+<button class="show" mat-raised-button (click)="add()">Añadir</button>
+<div class="add" *ngIf='mostrar'>
     <form [formGroup]='formGroup' (ngSubmit)='agregarComida()'>
       <mat-form-field>
         <mat-label>Name</mat-label>
@@ -23,7 +16,25 @@
         <input matInput formControlName="calories" />
       </mat-form-field>
         <input type="file" formControlName="img" />
-        <button color="primary" mat-raised-button type="submit">Enviar</button>
+        <button color="primary" mat-raised-button color='accent' type="submit">Enviar</button>
     </form>
+  </div>
+
+<div class="container">
+  <div class="foods" *ngFor="let food of listFoods | searchPipe: search.value">
+    <img src="{{ food.image }}" alt="" />
+    <div class="text">
+      <p><strong>{{ food.name }}</strong></p>
+      <p>Calories: {{ food.calories }}</p>
+    </div>
+    <button  matInput mat-raised-button color='accent' type="text"  (click)='agregarMenu(food.name, food.calories)'>Add</button>
+  </div>
+</div>
+
+<div class="menu" >
+  <h2>Daily Menu</h2>
+  <p>Calories: {{maxCalories}}</p>
+  <div *ngFor='let m of menu'>
+    <p>{{m}}</p>
   </div>
 </div>

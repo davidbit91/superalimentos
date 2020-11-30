@@ -11,9 +11,10 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 export class FoodListComponent implements OnInit {
 
 maxCalories: number;
-listFoods: Object[] = foods;
-menu: String[];
+listFoods: object[] = foods;
+menu: string[];
 formGroup: FormGroup;
+mostrar: boolean = false;
 
   constructor(private fb: FormBuilder) { }
 
@@ -31,6 +32,7 @@ formGroup: FormGroup;
     this.menu.push(food);
     this.maxCalories += calories;
   }
+
   agregarComida(){
     this.listFoods.push({
       name: this.formGroup.get('name').value,
@@ -38,5 +40,8 @@ formGroup: FormGroup;
       img: this.formGroup.get('img').value
     });
     this.formGroup.reset();
+  }
+  add() {
+    this.mostrar = !this.mostrar;
   }
 }

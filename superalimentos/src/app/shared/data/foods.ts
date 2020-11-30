@@ -96,6 +96,5 @@ const foods: Object[] = [
       quantity: 0
     }
   ]
-  
+
   export default foods;
-  
